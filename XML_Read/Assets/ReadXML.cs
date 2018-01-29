@@ -7,6 +7,7 @@ using System.IO;
 
 public class ReadXML : MonoBehaviour {
 	public GameObject cube;
+	public GameObject parentOBJ;
 
 
 	float x=0;
@@ -32,7 +33,7 @@ public class ReadXML : MonoBehaviour {
 				}
 			}
 			Vector3 position = new Vector3 (x, 0, 4000-z);
-			Instantiate (cube, position, Quaternion.identity);
+			Instantiate (cube, position, Quaternion.identity).transform.parent = parentOBJ.transform;
 		}
 	}
 	
