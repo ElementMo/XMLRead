@@ -6,12 +6,12 @@ using System.IO;
 
 
 public class ReadXML : MonoBehaviour {
-	public GameObject cube;
+	public GameObject[] buildings;
 	public GameObject parentOBJ;
+	public float chaocity = 1;
 
-
-	float x=0;
-	float z=0;
+	float x = 0;
+	float z = 0;
 
 	// Use this for initialization
 	void Start () 
@@ -32,8 +32,9 @@ public class ReadXML : MonoBehaviour {
 					z = float.Parse(xAndy.InnerText);
 				}
 			}
-			Vector3 position = new Vector3 (x, 0, 4000-z);
-			Instantiate (cube, position, Quaternion.identity).transform.parent = parentOBJ.transform;
+			Vector3 position = new Vector3 (x + Random.Range(-chaocity,chaocity), 0, 4000-z + Random.Range(-chaocity,chaocity));
+			int n = Random.Range (0, buildings.Length);
+			Instantiate (buildings[n], position, Quaternion.identity).transform.parent = parentOBJ.transform;
 		}
 	}
 	
